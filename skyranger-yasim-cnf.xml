@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<PropertyList include="skyranger-base.xml">
+
+  <sim>
+
+    <description>Skyranger (YASim)</description>
+    <flight-model archive="y">yasim</flight-model>
+    <aero archive="y">skyranger-yasim</aero>
+
+  </sim>
+ 
+</PropertyList>

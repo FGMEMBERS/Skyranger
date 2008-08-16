@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+  <sim include="Nasal/views.xml">
+
+    <author>BARANGER Emmanuel (3D/FDM)</author>
+    <aircraft-version>0.2</aircraft-version>
+    <status>Alpha</status>
+
+    <fuel-fraction>1.0</fuel-fraction>
+
+    <startup>
+      <splash-texture>Aircraft/Skyranger/skyranger-splash.png</splash-texture>
+    </startup>
+
+    <sound>
+      <path archive="y">Aircraft/Skyranger/Sounds/skyranger-sound.xml</path>
+    </sound>
+
+    <model>
+      <path archive="y">Aircraft/Skyranger/Models/skyranger.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+    </model>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+      </generic>
+    </multiplay>
+
+    <help>
+      <title>U.L.M Skyranger</title>
+      <line>______________________________________________</line>
+    </help>
+
+    <menubar include="Dialogs/skyranger-menu.xml"/>
+
+  </sim>
+ 
+  <input>
+    <keyboard include="Nasal/skyranger-keyboard.xml"/>
+  </input>
+
+  <!-- Démarrer avec les freins parking -->
+  <controls>
+    <gear>
+      <brake-parking type="double">1</brake-parking>
+    </gear>
+  </controls>
+
+  <nasal>
+    <skyranger>
+      <file>Aircraft/Skyranger/Nasal/doors.nas</file>
+      <file>Aircraft/SM-55/Nasal/liveries.nas</file>
+      <file>Aircraft/SM-55/Nasal/light.nas</file>
+    </skyranger>
+  </nasal>
+
+</PropertyList>
