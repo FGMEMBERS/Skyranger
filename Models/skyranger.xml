@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
 
@@ -32,9 +32,6 @@
 
     <!-- Objets transparents -->
     <object-name>fuselageT</object-name>
-    <object-name>vitre</object-name>
-    <object-name>propblur</object-name>
-    <object-name>propdisc</object-name>
     <object-name>ailes</object-name>
     <object-name>derive</object-name>
     <object-name>profondeur</object-name>
@@ -42,13 +39,24 @@
     <object-name>volet</object-name>
     <object-name>aileronG</object-name>
     <object-name>aileronD</object-name>
+
+    <object-name>propblur</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>vitres</object-name>
   </animation>
 
   <animation>
     <type>noshadow</type>
-    <object-name>vitre</object-name>
+    <object-name>vitres</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>glass_shader.png</texture>
+    <object-name>vitres</object-name>
   </animation>
 
   <animation>
@@ -70,6 +78,7 @@
 
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
+    <texture>texture.png</texture>
 <!--
     <diffuse>
       <red-prop>diffuse/red</red-prop>
@@ -112,8 +121,9 @@
     <object-name>aileronG</object-name>
     <object-name>aileronD</object-name>
 
-    <property-base>sim/model/livery</property-base>
-    <texture-prop>texture-trans</texture-prop>
+    <property-base>sim/model/livery-t</property-base>
+    <texture-prop>texture</texture-prop>
+    <texture>texture-t.png</texture>
 <!--
     <diffuse>
       <red-prop>diffuse/red</red-prop>

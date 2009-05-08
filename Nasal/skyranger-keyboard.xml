@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
 
-   <key n="77">
+  <key n="77">
     <name>M</name>
     <desc>Mixture leaner.</desc>
     <repeatable type="bool">true</repeatable>
@@ -10,16 +10,16 @@
      <command>nasal</command>
      <script>controls.adjMixture(1)</script>
     </binding>
-   </key>
+  </key>
 
-   <key n="100">
+  <key n="100">
     <name>d</name>
     <desc>Canopy</desc>
     <binding>
      <command>nasal</command>
-     <script>lionceau.doorsystem.crewexport();</script>
+     <script>skyranger.doorsystem.crewexport();</script>
     </binding>
-   </key>
+  </key>
 
 </PropertyList>
 

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <!-- Skyranger 2008 Emmanuel BARANGER
      Based on FDM of Pierre GEOFFROY
 
@@ -110,7 +112,7 @@
   
  <!-- Nose wheel -->
   <gear x="2.137" y="0" z="-1.133" 
-        compression="0.15" 
+        compression="0.2" 
         spring="1.3" 
         dfric="0.75"
         sfric ="0.4">
@@ -119,7 +121,7 @@
 
   <!-- Left wheel -->
   <gear x="0.601" y="1.015" z="-1.126" 
-        compression="0.15" 
+        compression="0.2" 
         spring="1.3" 
         dfric="0.75"
         sfric ="0.4">
@@ -129,7 +131,7 @@
 
   <!-- Right wheel -->
   <gear x="0.601" y="-1.015" z="-1.126" 
-        compression="0.15" 
+        compression="0.2" 
         spring="1.3" 
         dfric="0.75"
         sfric ="0.4">

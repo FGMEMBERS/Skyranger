@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <PropertyList>
 
@@ -23,6 +23,9 @@
       <livery>
         <file type="string">default</file>
       </livery>
+      <livery-t>
+        <file type="string">default</file>
+      </livery-t>
     </model>
 
     <multiplay>
@@ -60,8 +63,8 @@
   <nasal>
     <skyranger>
       <file>Aircraft/Skyranger/Nasal/doors.nas</file>
-      <file>Aircraft/SM-55/Nasal/liveries.nas</file>
-      <file>Aircraft/SM-55/Nasal/light.nas</file>
+      <file>Aircraft/Skyranger/Nasal/liveries.nas</file>
+      <file>Aircraft/Skyranger/Nasal/light.nas</file>
     </skyranger>
   </nasal>
 
