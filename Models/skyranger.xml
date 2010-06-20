@@ -22,7 +22,13 @@
     <object-name>voletint</object-name>
     <object-name>profondeurint</object-name>
     <object-name>moteur</object-name>
-    <object-name>axe</object-name>
+    <object-name>moteur1</object-name>
+    <object-name>moteur2</object-name>
+    <object-name>moteur3</object-name>
+    <object-name>moteur4</object-name>
+    <object-name>moteur5</object-name>
+    <object-name>axeG</object-name>
+    <object-name>axeD</object-name>
     <object-name>axeA</object-name>
     <object-name>roueA</object-name>
     <object-name>roueG</object-name>
@@ -46,20 +52,6 @@
   </animation>
 
   <animation>
-    <type>noshadow</type>
-    <object-name>vitres</object-name>
-    <object-name>propdisc</object-name>
-    <object-name>propblur</object-name>
-  </animation>
-
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>glass_shader.png</texture>
-    <object-name>vitres</object-name>
-  </animation>
-
-  <animation>
     <type>material</type>
     <object-name>fuselage</object-name>
     <object-name>structure</object-name>
@@ -68,7 +60,13 @@
     <object-name>voletint</object-name>
     <object-name>profondeurint</object-name>
     <object-name>moteur</object-name>
-    <object-name>axe</object-name>
+    <object-name>moteur1</object-name>
+    <object-name>moteur2</object-name>
+    <object-name>moteur3</object-name>
+    <object-name>moteur4</object-name>
+    <object-name>moteur5</object-name>
+    <object-name>axeG</object-name>
+    <object-name>axeD</object-name>
     <object-name>axeA</object-name>
     <object-name>roueA</object-name>
     <object-name>roueG</object-name>
@@ -155,16 +153,47 @@
 -->
   </animation>
 
+  <animation>
+    <type>noshadow</type>
+    <object-name>vitres</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>vitres</object-name>
+  </animation>
+
+  <!-- Une ombre pour OSG -->
+  <model>
+    <name>shadowOSG</name>
+    <path>Aircraft/Skyranger/Models/shadow.xml</path>
+  </model>
+
+  <animation>
+    <type>select</type>
+    <object-name>shadowOSG</object-name>
+    <condition>
+      <equals>
+        <property>sim[0]/rendering/shadows-ai</property>
+        <value>true</value>
+      </equals>
+    </condition>
+  </animation>
+
   <!-- Intérieur -->
   <model>
     <path>Aircraft/Skyranger/Models/Interior/interior.xml</path>
     <offsets>
-      <x-m> 0.0 </x-m>
-      <y-m> 0.0 </y-m>
-      <z-m> 0.0 </z-m>
-      <roll-deg>    0.0 </roll-deg>
-      <pitch-deg>   0.0 </pitch-deg>
-      <heading-deg> 0.0 </heading-deg>
+      <x-m> 0 </x-m>
+      <y-m> 0 </y-m>
+      <z-m> 0 </z-m>
+      <roll-deg>    0 </roll-deg>
+      <pitch-deg>   0 </pitch-deg>
+      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -228,28 +257,33 @@
       <z-m> -0.037 </z-m>
     </center>
     <axis>
-      <x> -1.000 </x>
-      <y>  0.000 </y>
-      <z>  0.000 </z>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
   <!-- Gouverne de profondeur -->
   <animation>
-    <type>rotate</type>
+    <name>GouverneProf</name>
     <object-name>profondeur</object-name>
     <object-name>profondeurint</object-name>
-    <property>controls/flight/elevator</property>
-    <factor>11</factor>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>GouverneProf</object-name>
+    <property>surface-positions/elevator-pos-norm</property>
+    <factor> 11 </factor>
     <center>
       <x-m> 2.293 </x-m>
       <y-m> 0.000 </y-m>
       <z-m> 0.363 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -257,8 +291,8 @@
   <animation>
     <type>rotate</type>
     <object-name>direction</object-name>
-    <property>controls/flight/rudder</property>
-    <factor>20</factor>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
     <axis>
       <x1-m>  2.252 </x1-m>
       <y1-m>  0.000 </y1-m>
@@ -275,16 +309,16 @@
     <object-name>aileronG</object-name>
     <object-name>aileronGint</object-name>
     <property>surface-positions/left-aileron-pos-norm</property>
-    <factor>15.0</factor>
+    <factor> 15 </factor>
     <center>
       <x-m> -0.172 </x-m>
       <y-m> -3.630 </y-m>
       <z-m>  0.526 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation> 
 
@@ -293,16 +327,16 @@
     <object-name>aileronD</object-name>
     <object-name>aileronDint</object-name>
     <property>surface-positions/right-aileron-pos-norm</property>
-    <factor>15.0</factor>
+    <factor> 15 </factor>
     <center>
       <x-m> -0.172 </x-m>
       <y-m>  3.630 </y-m>
       <z-m>  0.526 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
@@ -312,26 +346,101 @@
     <object-name>volet</object-name>
     <object-name>voletint</object-name>
     <property>surface-positions/flap-pos-norm</property>
-    <factor>50.0</factor>
+    <factor> 50 </factor>
     <center>
       <x-m> -0.172 </x-m>
       <y-m>  0.000 </y-m>
       <z-m>  0.516 </z-m>
     </center>
     <axis>
-      <x> 0.000 </x>
-      <y> 1.000 </y>
-      <z> 0.000 </z>
+      <x> 0 </x>
+      <y> 1 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <!-- Compression -->
+  <animation>
+    <name>TrainAvant</name>
+    <object-name>roueA</object-name>
+    <object-name>axeA</object-name>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>TrainAvant</object-name>
+    <property>gear/gear[0]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1.0 </ind><dep> 0.15 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 0.364151 </x>
+      <y> 0.000000 </y>
+      <z> 0.838078 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>TrainGauche</name>
+    <object-name>roueG</object-name>
+    <object-name>axeG</object-name>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>TrainGauche</object-name>
+    <property>gear/gear[1]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> -4 </dep></entry>
+      <entry><ind> 0.6 </ind><dep>  1 </dep></entry>
+      <entry><ind> 1.0 </ind><dep>  6 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -0.586 </x-m>
+      <y-m> -0.602 </y-m>
+      <z-m> -0.470 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y>  0 </y>
+      <z>  0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <name>TrainDroit</name>
+    <object-name>roueD</object-name>
+    <object-name>axeD</object-name>
+  </animation>
+
+  <animation>
+    <type>rotate</type>
+    <object-name>TrainDroit</object-name>
+    <property>gear/gear[2]/compression-norm</property>
+    <interpolation>
+      <entry><ind> 0.0 </ind><dep> -4 </dep></entry>
+      <entry><ind> 0.6 </ind><dep>  1 </dep></entry>
+      <entry><ind> 1.0 </ind><dep>  6 </dep></entry>
+    </interpolation>
+    <center>
+      <x-m> -0.586 </x-m>
+      <y-m>  0.602 </y-m>
+      <z-m> -0.470 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
     </axis>
   </animation>
 
   <!-- Rotation de la roue avant en fonction de la gouverne de direction -->
   <animation>
     <type>rotate</type>
-    <object-name>roueA</object-name>
-    <object-name>axeA</object-name>
-    <property>controls/flight/rudder</property>
-    <factor> -20.0 </factor>
+    <object-name>TrainAvant</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> -20 </factor>
     <center>
       <x-m> -1.887585 </x-m>
       <y-m>  0.000000 </y-m>
@@ -341,81 +450,6 @@
       <x> 0.364151 </x>
       <y> 0.000000 </y>
       <z> 0.838078 </z>
-    </axis>
-  </animation>
-
-  <!-- Compression -->
-  <animation>
-    <type>translate</type>
-    <object-name>roueA</object-name>
-    <object-name>axeA</object-name>
-    <property>gear/gear[0]/compression-norm</property>
-    <interpolation>
-      <entry>
-        <ind>  0.0 </ind>
-        <dep>  0.0 </dep>
-      </entry>
-      <entry>
-        <ind> 1.000 </ind>
-        <dep> 0.150 </dep>
-      </entry>
-    </interpolation>
-    <axis>
-      <x> 0.364151 </x>
-      <y> 0.000000 </y>
-      <z> 0.838078 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>roueG</object-name>
-    <property>gear/gear[1]/compression-norm</property>
-    <interpolation>
-      <entry>
-        <ind> 0.0 </ind>
-        <dep> 0.0 </dep>
-      </entry>
-      <entry>
-        <ind>  1.0 </ind>
-        <dep> 10.0 </dep>
-      </entry>
-    </interpolation>
-    <center>
-      <x-m> -0.601 </x-m>
-      <y-m> -1.015 </y-m>
-      <z-m> -0.981 </z-m>
-    </center>
-    <axis>
-      <x> -1.000 </x>
-      <y>  0.000 </y>
-      <z>  0.000 </z>
-    </axis>
-  </animation>
-
-  <animation>
-    <type>rotate</type>
-    <object-name>roueD</object-name>
-    <property>gear/gear[2]/compression-norm</property>
-    <interpolation>
-      <entry>
-        <ind> 0.0 </ind>
-        <dep> 0.0 </dep>
-      </entry>
-      <entry>
-        <ind>  1.0 </ind>
-        <dep> 10.0 </dep>
-      </entry>
-    </interpolation>
-    <center>
-      <x-m> -0.601 </x-m>
-      <y-m>  1.015 </y-m>
-      <z-m> -0.981 </z-m>
-    </center>
-    <axis>
-      <x> 1.000 </x>
-      <y> 0.000 </y>
-      <z> 0.000 </z>
     </axis>
   </animation>
 
@@ -431,9 +465,9 @@
       <z-m> -0.988 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -448,9 +482,9 @@
       <z-m> -0.981 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 
@@ -465,9 +499,9 @@
       <z-m> -0.9817 </z-m>
     </center>
     <axis>
-      <x>  0.000 </x>
-      <y> -1.000 </y>
-      <z>  0.000 </z>
+      <x>  0 </x>
+      <y> -1 </y>
+      <z>  0 </z>
     </axis>
   </animation>
 

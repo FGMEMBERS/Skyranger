@@ -61,8 +61,10 @@
   </controls>
 
   <nasal>
-    <skyranger>
+    <doors>
       <file>Aircraft/Skyranger/Nasal/doors.nas</file>
+    </doors>
+    <skyranger>
       <file>Aircraft/Skyranger/Nasal/liveries.nas</file>
       <file>Aircraft/Skyranger/Nasal/light.nas</file>
     </skyranger>

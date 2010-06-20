@@ -2,6 +2,7 @@
 
 <!-- Skyranger 2008 Emmanuel BARANGER
      Based on FDM of Pierre GEOFFROY
+     21-06-2010 : Update total by Emmanuel BARANGER with Melchior script 
 
      Wingspan        : 9.5 m
      Length          : 5.6 m
@@ -17,28 +18,29 @@
   <approach speed="33" aoa="8.05" fuel="0.2">
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.2"/>
     <control-setting axis="/controls/engines/engine[0]/mixture" value="1.0"/>
-    <control-setting axis="/controls/flight/flaps" value="1.0"/>
+    <control-setting axis="/controls/flight/flaps" value="1"/>
   </approach>
 
   <!-- Cruise configuration -->
   <cruise speed="76" alt="6000" fuel="0.5">
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.75"/>
-    <control-setting axis="/controls/engines/engine[0]/mixture" value="1.0"/>
-    <control-setting axis="/controls/flight/flaps" value="0.0"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="1"/>
+    <control-setting axis="/controls/flight/flaps" value="0"/>
   </cruise>
 
   <cockpit x="0.719" y="0.326" z="0.310"/>
 
-  <fuselage ax="2.747" ay="0" az="-0.037" bx="-2.749" by="0" bz="0.240" width="1.244" taper="0.2" midpoint="1"/>
+  <fuselage ax="2.747" ay="0" az="-0.037" bx="-2.749" by="0" bz="0.240" width="1.244" taper="0.2" midpoint="0.25"/>
 
-  <wing x="0.675" y="0.585" z="0.618" 
-        chord="1.477" 
+  <wing x="0.601" y="0.585" z="0.618" 
+        chord="1.486" 
         length="4.159" 
-        taper="1" 
-        camber="0.11410">
+        taper="0.85"
+        sweep="-1.5"
+        camber="0.1">
         <stall aoa="16" width="1.0" peak="1.5"/>
-        <flap0 start="0" end="0.557" lift="1.4" drag="1.5"/>
-        <flap1 start="0.558" end="0.95" lift="1.2" drag="1.1"/>
+        <flap0 start="0.00" end="0.47" lift="1.4" drag="1.5"/>
+        <flap1 start="0.47" end="1.00" lift="1.2" drag="1.1"/>
 
         <control-input axis="/controls/flight/flaps" control="FLAP0"/>
         <control-input axis="/controls/flight/aileron" control="FLAP1" split="true"/>
@@ -51,10 +53,11 @@
         <control-speed control="FLAP0" transition-time="5"/>
   </wing>
 
-  <hstab x="-2.171" y="-0.065" z="0.361" 
+  <hstab x="-2.171" y="0" z="0.361" 
          chord="1.169" 
-         length="1.437" 
-         taper="0.5">
+         length="1.52"
+         sweep="7"
+         taper="0.45">
          <stall aoa="16" width="4" peak="1.5"/>
          <flap0 start="0" end="1" lift="2.0" drag="1.1" effectiveness="2"/>
 
@@ -64,11 +67,11 @@
         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
   </hstab>
 
-  <vstab x="-2.171" y="0" z="0.394" 
+  <vstab x="-2.171" y="0" z="-0.208" 
          chord="1.170" 
-         length="1.101" 
+         length="1.310" 
          taper="0.506" 
-         sweep="39.8" >
+         sweep="10">
          <stall aoa="14" width="3" peak="1.5"/>
          <flap0 start="0" end="1" lift="1.5" drag="1.2"/>
 
@@ -88,10 +91,10 @@
   MTOM: 620 kg
   noise (dB): 66,0 (ICAO chapter 10, annex 16), 76,4 (ICAO chapter 10, annex 10.4a)
   ref: http://www.rotax-aircraft-engines.com/a_engine_912.htm  -->
-  <propeller x="2.162" y="0.0" z="-0.137" 
+  <propeller x="2.162" y="0" z="-0.137" 
              mass="183" 
              moment="4.40"  
-             radius="0.88"
+             radius="0.81"
              cruise-speed="76" 
              cruise-rpm="2112"
              cruise-alt="6000" 
@@ -102,7 +105,7 @@
              <piston-engine eng-rpm="5800" 
                             eng-power="81"
                             displacement="73.91" 
-                            compression="9.0"/>
+                            compression="9"/>
              <actionpt x="2.636" y="0.0" z="-0.037" />
              <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle" />
              <control-input control="STARTER" axis="/controls/engines/engine[0]/starter" />
@@ -112,17 +115,17 @@
   
  <!-- Nose wheel -->
   <gear x="2.137" y="0" z="-1.133" 
-        compression="0.2" 
-        spring="1.3" 
+        compression="0.15" 
+        spring="1" 
         dfric="0.75"
         sfric ="0.4">
-        <control-input axis="/controls/flight/rudder" control="STEER" src0="-1.0" src1="1.0" dst0="-0.5" dst1="0.5"/>
+        <control-input axis="/controls/flight/rudder" control="STEER" src0="-0.5" src1="0.5" dst0="-0.25" dst1="0.25"/>
   </gear>
 
   <!-- Left wheel -->
   <gear x="0.601" y="1.015" z="-1.126" 
-        compression="0.2" 
-        spring="1.3" 
+        compression="0.1" 
+        spring="0.6" 
         dfric="0.75"
         sfric ="0.4">
         <control-input axis="/controls/gear/brake-left" control="BRAKE" split="true"/>
@@ -131,8 +134,8 @@
 
   <!-- Right wheel -->
   <gear x="0.601" y="-1.015" z="-1.126" 
-        compression="0.2" 
-        spring="1.3" 
+        compression="0.1" 
+        spring="0.6" 
         dfric="0.75"
         sfric ="0.4">
         <control-input axis="/controls/gear/brake-right" control="BRAKE" split="true"/>
@@ -143,8 +146,8 @@
 
   <!-- Mass distribution -->
   <!-- Centre de la corde x=0.675 y=0 z=0.618 -->
-  <!-- Mise légèrement en avant du CG w=1.060 y=0 z=0.550 -->
-  <ballast x="0.70" y="0.0" z="0.951" mass="350"/>
+  <!-- Mise legerement en avant du CG w=1.060 y=0 z=0.550 -->
+  <ballast x="0.70" y="0" z="-0.951" mass="350"/>
 
 </airplane>
 
