@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
 
@@ -7,12 +7,26 @@
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Aircraft/Skyranger/Models/Liveries", 10);
+      
+      var self = cmdarg();
+      
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
+      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+      
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
     </load>
+    
     <unload>
       livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
     </unload>
   </nasal>
-
+  
   <animation>
     <!-- Objets opaques -->
     <object-name>fuselage</object-name>
@@ -77,35 +91,16 @@
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-<!--
-    <diffuse>
-      <red-prop>diffuse/red</red-prop>
-      <green-prop>diffuse/green</green-prop>
-      <blue-prop>diffuse/blue</blue-prop>
-    </diffuse>
-
-    <ambient>
-      <red-prop>ambient/red</red-prop>
-      <green-prop>ambient/green</green-prop>
-      <blue-prop>ambient/blue</blue-prop>
-    </ambient>
--->
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
     <emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </emission>
-<!--
-    <shininess>
-      <shininess-prop>shininess</shininess-prop>
-    </shininess>
--->
   </animation>
 
   <animation>
@@ -122,35 +117,16 @@
     <property-base>sim/model/livery-t</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture-t.png</texture>
-<!--
-    <diffuse>
-      <red-prop>diffuse/red</red-prop>
-      <green-prop>diffuse/green</green-prop>
-      <blue-prop>diffuse/blue</blue-prop>
-    </diffuse>
-
-    <ambient>
-      <red-prop>ambient/red</red-prop>
-      <green-prop>ambient/green</green-prop>
-      <blue-prop>ambient/blue</blue-prop>
-    </ambient>
--->
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
     <emission>
       <red-prop>emission/red</red-prop>
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </emission>
-<!--
-    <shininess>
-      <shininess-prop>shininess</shininess-prop>
-    </shininess>
--->
   </animation>
 
   <animation>
@@ -167,36 +143,70 @@
     <object-name>vitres</object-name>
   </animation>
 
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <condition>
+      <property>sim/rendering/rembrandt/enabled</property>
+    </condition>
+    <object-name>vitres</object-name>
+    <object-name>propdisc</object-name>
+    <object-name>propblur</object-name>
+  </effect>
+  
   <!-- Une ombre pour OSG -->
   <model>
-    <name>shadowOSG</name>
     <path>Aircraft/Skyranger/Models/shadow.xml</path>
-  </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>shadowOSG</object-name>
-    <condition>
-      <equals>
-        <property>sim[0]/rendering/shadows-ai</property>
-        <value>true</value>
-      </equals>
-    </condition>
-  </animation>
-
-  <!-- Intérieur -->
-  <model>
-    <path>Aircraft/Skyranger/Models/Interior/interior.xml</path>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
-      <roll-deg>    0 </roll-deg>
-      <pitch-deg>   0 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
+      <x-m>  0.00 </x-m>
+      <y-m>  0.00 </y-m>
+      <z-m> -1.01 </z-m>
     </offsets>
   </model>
 
+  <!-- Intérieur -->
+  <model>
+    <name>Interieur</name>
+    <path>Aircraft/Skyranger/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- For Rembrandt -->
+  <animation>
+    <type>noshadow</type>
+    <object-name>Interieur</object-name>
+  </animation>
+  
+  <!-- Effets sur le sol -->
+  <!-- Roue avant -->
+  <model>
+    <path>Aircraft/Skyranger/Models/Effects/ground/ground0.xml</path>
+    <offsets>
+      <x-m> -2.137 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m> -1.133 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Roues gauches -->
+  <model>
+    <path>Aircraft/Skyranger/Models/Effects/ground/ground1.xml</path>
+    <offsets>
+      <x-m> -0.601 </x-m>
+      <y-m> -1.015 </y-m>
+      <z-m> -1.126 </z-m>
+    </offsets>
+  </model>
+  
+  <!-- Roues droites -->
+  <model>
+    <path>Aircraft/Skyranger/Models/Effects/ground/ground2.xml</path>
+    <offsets>
+      <x-m> -0.601 </x-m>
+      <y-m>  1.015 </y-m>
+      <z-m> -1.126 </z-m>
+    </offsets>
+  </model>
+  
   <!-- L'hélice --> 
   <animation>
     <name>HeliceComplete</name>
@@ -241,7 +251,7 @@
     <condition>
       <less-than>
         <property>engines/engine[0]/rpm</property>
-	<value>1500</value>
+        <value>1500</value>
       </less-than>
     </condition>
   </animation>
@@ -249,6 +259,12 @@
   <animation>
     <type>spin</type>
     <object-name>HeliceComplete</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
     <property>engines/engine[0]/rpm</property>
     <factor> 1 </factor>
     <center>
@@ -274,7 +290,7 @@
     <type>rotate</type>
     <object-name>GouverneProf</object-name>
     <property>surface-positions/elevator-pos-norm</property>
-    <factor> 11 </factor>
+    <factor> 15 </factor>
     <center>
       <x-m> 2.293 </x-m>
       <y-m> 0.000 </y-m>
@@ -292,7 +308,7 @@
     <type>rotate</type>
     <object-name>direction</object-name>
     <property>surface-positions/rudder-pos-norm</property>
-    <factor> 20 </factor>
+    <factor> 15 </factor>
     <axis>
       <x1-m>  2.252 </x1-m>
       <y1-m>  0.000 </y1-m>
@@ -494,8 +510,8 @@
     <property>gear/gear[1]/rollspeed-ms</property>
     <factor> 30 </factor>
     <center>
-      <x-m> -0.601 </x-m>
-      <y-m>  1.015 </y-m>
+      <x-m> -0.6010 </x-m>
+      <y-m>  1.0150 </y-m>
       <z-m> -0.9817 </z-m>
     </center>
     <axis>
@@ -506,4 +522,3 @@
   </animation>
 
 </PropertyList>
-
