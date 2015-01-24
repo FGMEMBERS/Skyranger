@@ -10,7 +10,7 @@ data 9
 interieur
 texture "interior.png"
 texrep 1.000000 1.000000
-crease 30.000001
+crease 180.000005
 numvert 20
 -0.434036 -0.450463 -0.615735
 -1.670174 -0.450463 -0.615735
@@ -109,7 +109,7 @@ name "intvitres"
 loc 0 0 -0
 data 9
 intvitres
-crease 30.000001
+crease 180.000005
 numvert 55
 -1.934703 0.128526 0.11548
 -1.940095 0.133683 0.074969
@@ -439,7 +439,7 @@ data 5
 siege
 texture "interior.png"
 texrep 1.000000 1.000000
-crease 30.000001
+crease 180.000005
 numvert 280
 -0.479816 0.16585 -0.517839
 -0.540338 -0.378565 -0.517839
