@@ -8,31 +8,20 @@
         <livery>
           <name type="string">Default</name>
           <texture>texture.png</texture>
-        <specular>
-          <red>   0.3 </red>
-          <green> 0.3 </green>
-          <blue>  0.3 </blue>
-        </specular>
-        <emission>
-          <red>   0.02 </red>
-          <green> 0.02 </green>
-          <blue>  0.02 </blue>
-        </emission>
+          <specular>
+            <red>   0.3 </red>
+            <green> 0.3 </green>
+            <blue>  0.3 </blue>
+          </specular>
         </livery>
 
         <livery-t>
-          <name type="string">Default</name>
           <texture>texture-t.png</texture>
-        <specular>
-          <red>   0.3 </red>
-          <green> 0.3 </green>
-          <blue>  0.3 </blue>
-        </specular>
-        <emission>
-          <red>   0.02 </red>
-          <green> 0.02 </green>
-          <blue>  0.02 </blue>
-        </emission>
+          <specular>
+            <red>   0.2 </red>
+            <green> 0.2 </green>
+            <blue>  0.2 </blue>
+          </specular>
         </livery-t>
       </model>
 
