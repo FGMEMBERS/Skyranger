@@ -13,8 +13,8 @@
       var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
       
-      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
-      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
       
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
@@ -96,11 +96,6 @@
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-    <emission>
-      <red-prop>emission/red</red-prop>
-      <green-prop>emission/green</green-prop>
-      <blue-prop>emission/blue</blue-prop>
-    </emission>
   </animation>
 
   <animation>
@@ -122,34 +117,32 @@
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-    <emission>
-      <red-prop>emission/red</red-prop>
-      <green-prop>emission/green</green-prop>
-      <blue-prop>emission/blue</blue-prop>
-    </emission>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
-    <object-name>vitres</object-name>
-    <object-name>propdisc</object-name>
-    <object-name>propblur</object-name>
-  </animation>
-
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
-    <object-name>vitres</object-name>
   </animation>
 
   <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Skyranger/Models/Effects/Glass/glass</inherits-from>
+    <object-name>vitres</object-name>
+  </effect>
+  
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>vitres</object-name>
+    <object-name>fuselageT</object-name>
+    <object-name>ailes</object-name>
+    <object-name>derive</object-name>
+    <object-name>profondeur</object-name>
+    <object-name>direction</object-name>
+    <object-name>volet</object-name>
+    <object-name>aileronG</object-name>
+    <object-name>aileronD</object-name>
+  </effect>
+  
   <effect>
     <inherits-from>Effects/model-transparent</inherits-from>
     <condition>
       <property>sim/rendering/rembrandt/enabled</property>
     </condition>
-    <object-name>vitres</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
   </effect>
@@ -166,15 +159,20 @@
 
   <!-- Intérieur -->
   <model>
-    <name>Interieur</name>
+    <usage>interior</usage>
     <path>Aircraft/Skyranger/Models/Interior/interior.xml</path>
   </model>
 
-  <!-- For Rembrandt -->
-  <animation>
-    <type>noshadow</type>
-    <object-name>Interieur</object-name>
-  </animation>
+  <!-- Cranking effects -->
+  <model>
+    <path>Aircraft/Skyranger/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -1.52415 </x-m>
+      <y-m> -0.46122 </y-m>
+      <z-m> -0.57827 </z-m>
+      <pitch-deg> 50 </pitch-deg>
+    </offsets>
+  </model>
   
   <!-- Effets sur le sol -->
   <!-- Roue avant -->
